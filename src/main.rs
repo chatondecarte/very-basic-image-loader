@@ -5,21 +5,20 @@ extern crate minifb;
 use minifb::{Key, Window, WindowOptions};
 use image::GenericImageView;
 use std::env;
-use std::process;
 
 
 fn main() {
 
 	// get path from first argument
-	let args: Vec<String> = env::args().collect(); 
+	let args :Vec<String> = env::args().collect(); 
 	let path = match args.len() {
 		1 => {
 			   println!("i don't know which image you want i draw");
-			   process::exit(0);
+			   return;
 			},
 		2 => &args[1],
 		_ => {
-			   println!("i 'm drawing the first one");
+			   println!("i'm drawing the first one");
 			   &args[1]
 			}
 	};
@@ -29,7 +28,7 @@ fn main() {
     	Ok(img) => img,
     	Err(_) => {
     				println!("i can't read that");
-    				process::exit(0);
+    				return;
     			}
     };
 
